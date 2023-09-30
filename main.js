@@ -1,8 +1,8 @@
-import getPostText from "./getPostText.js";
-import filterByCategory from "./filterByCategory.js";
-import parseHTML from "./parseHTML.js";
-import getPostArticle from "./getPostArticle.js";
-import savePosts from './savePosts.js';
+import getPostText from "./src/getPostText.js";
+import filterByCategory from "./src/filterByCategory.js";
+import parseHTML from "./src/parseHTML.js";
+import getPostArticle from "./src/getPostArticle.js";
+import savePosts from './src/savePosts.js';
 
 const URL = "https://andalinux.wordpress.com/tag/cinelerra/";
 const HTMLTEXT = await fetch(
