@@ -4,24 +4,9 @@ import parseHTML from "./src/parseHTML.js";
 import getPostArticle from "./src/getPostArticle.js";
 import savePosts from './src/savePosts.js';
 
-const args = process.argv.slice(2);
+import arguments from './src/arguments.js';
 
-const categoryIndex = args.findIndex(arg => arg === 'category');
-const category = args[(categoryIndex + 1)];
-
-if (!category || !category || category.length === 0) {
-  throw new Error('No category provided');
-}
-
-const saveDirIndex = args.findIndex(arg => arg === 'dir');
-let saveDir = args[(saveDirIndex + 1)];
-
-console.log(`Searching in category: ${category}`);
-
-if (saveDirIndex === -1 || saveDir.length === 0 || typeof saveDir !== 'string') {
-  console.log('Invalid save directory');
-  saveDir = category;
-}
+const { category, saveDir } = arguments();
 
 const getPost = async (category, page) => {
 
