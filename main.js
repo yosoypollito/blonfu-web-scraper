@@ -13,7 +13,15 @@ if (!category || !category || category.length === 0) {
   throw new Error('No category provided');
 }
 
+const saveDirIndex = args.findIndex(arg => arg === 'dir');
+let saveDir = args[(saveDirIndex + 1)];
+
 console.log(`Searching in category: ${category}`);
+
+if (saveDirIndex === -1 || saveDir.length === 0 || typeof saveDir !== 'string') {
+  console.log('Invalid save directory');
+  saveDir = category;
+}
 
 const getPost = async (category, page) => {
 
@@ -35,6 +43,7 @@ const getPost = async (category, page) => {
     return null;
   }
   console.log(`Found ${postsURLS.length} posts for ${category} page ${page}`);
+  console.log('Saving into:', saveDir);
 
   const posts = await Promise.all(postsURLS.map(async (postURL) => {
     const text = await getPostText(postURL);
@@ -57,7 +66,7 @@ const getPost = async (category, page) => {
     }
   }))
 
-  await savePosts(posts);
+  await savePosts(posts, saveDir);
 
   return getPost(category, page + 1);
 }

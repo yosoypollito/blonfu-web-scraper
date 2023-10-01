@@ -8,12 +8,14 @@ import htmlToMD from './htmlToMD.js'
 import saveFile from './saveFile.js'
 
 
-export default async function (posts) {
+export default async function (posts, savePath) {
   if (!posts) {
     throw new Error('No posts provided');
   }
 
   await createDir(constants.SAVE_PATH)
+  const savingPath = path.join(constants.SAVE_PATH, savePath);
+  await createDir(savingPath);
 
   for (const post of posts) {
     if (!post) {
@@ -23,8 +25,8 @@ export default async function (posts) {
 
     const normalizedPostTitle = stringToFilename(post.title);
 
-    await createDir(path.join(constants.SAVE_PATH, normalizedPostTitle))
-    const currentPath = path.join(constants.SAVE_PATH, normalizedPostTitle);
+    const currentPath = path.join(savingPath, normalizedPostTitle);
+    await createDir(currentPath)
 
     await createDir(path.join(currentPath, 'images'))
 

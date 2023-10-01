@@ -1,3 +1,21 @@
+## v0.0.3
+Added saving folder name changing with `dir [folder name]`
+
+```
+node main.js category [category] dir [folder name]
+// node main.js category cinelerra dir export
+// Script save post into ./saves/export
+```
+
+## USAGE
+
+`npm install`
+
+```
+node main.js category [category]
+// node main.js category cinelerra
+```
+
 ## v0.0.2
 Added category handling and page recursion until no post found
 
