@@ -19,7 +19,7 @@ export default async function (posts) {
     if (!post) {
       continue;
     }
-    console.log(`Saving ${post.title}`)
+    console.log(`___ Saving ${post.title} `)
 
     const normalizedPostTitle = stringToFilename(post.title);
 
@@ -32,5 +32,6 @@ export default async function (posts) {
 
     await saveFile(path.join(currentPath, 'index.html'), htmlToSave);
     await saveFile(path.join(currentPath, 'readme.md'), htmlToMD(htmlToSave));
+    console.log(`___ Post Saved ___ \n`)
   }
 }

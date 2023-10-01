@@ -3,7 +3,7 @@ import parseHTML from './parseHTML.js'
 import { writeFile } from 'node:fs/promises';
 
 export default async function (html, pathToSave) {
-  console.log({ pathToSave })
+  console.log(`Saving Images`)
   if (!html) {
     throw new Error('No html provided');
   }
@@ -29,5 +29,6 @@ export default async function (html, pathToSave) {
     img.removeAttribute('srcset')
   }))
 
+  console.log(`Images Saved`);
   return HTML.innerHTML;
 }
