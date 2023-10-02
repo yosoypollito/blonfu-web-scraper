@@ -4,9 +4,9 @@ import parseHTML from "./src/parseHTML.js";
 import getPostArticle from "./src/getPostArticle.js";
 import savePosts from './src/savePosts.js';
 
-import arguments from './src/arguments.js';
+import argsHandler from './src/argsHandler.js';
 
-const { category, saveDir } = arguments();
+const { category, saveDir } = argsHandler();
 
 const getPost = async (category, page) => {
 
