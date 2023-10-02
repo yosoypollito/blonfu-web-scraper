@@ -6,7 +6,12 @@ export default function (html) {
     const headerNav = html.querySelector('.site-header');
     headerNav.remove()
 
-    return html.innerHTML;
+    const shareDivStart = html.innerHTML.indexOf('id="jp-post-flair"');
+
+    const shareDiv = html.querySelector('#jp-post-flair');
+    shareDiv.remove()
+
+    return html.innerHTML.slice(0, shareDivStart);
   }
 
   return postArticle.innerHTML;
